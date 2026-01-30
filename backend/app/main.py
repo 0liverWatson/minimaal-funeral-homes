@@ -39,11 +39,13 @@ def apply_filters(stmt, name=None, city=None, region=None, postal_code=None, cou
         stmt = stmt.where(func.lower(FuneralHome.name).like(pattern))
 
     if city:
-        stmt = stmt.where(FuneralHome.city).like(f"%{city}%")
+        pattern = f"%{city.strip().lower()}%"
+        stmt = stmt.where(func.lower(FuneralHome.city).like(pattern))
     if region:
         stmt = stmt.where(func.lower(FuneralHome.region) == func.lower(region))
     if postal_code:
-        stmt = stmt.where(FuneralHome.postal_code).like(f"%{postal_code}%")
+        pattern = f"%{postal_code.strip().lower()}%"
+        stmt = stmt.where(func.lower(FuneralHome.postal_code).like(pattern))
     if country:
         stmt = stmt.where(FuneralHome.country == country)
     if phone:
