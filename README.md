@@ -19,7 +19,7 @@ The unified DB has already been built using the jupyter notebook, and placed in 
 
 ```bash
 cd backend
-uvicorn app.main:app --reload --port:8081
+uvicorn app.main:app --reload --port 8081
 ```
 Verify: http://127.0.0.1:8081/health
 
